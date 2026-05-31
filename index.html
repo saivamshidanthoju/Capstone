@@ -1,1 +1,758 @@
-<h1>TTHIS IS MY JENKINS CI/CD</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Vamshi Danthoju — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --bg:#f7f6f2;
+  --white:#ffffff;
+  --black:#111110;
+  --gray:#888884;
+  --light:#ededea;
+  --accent:#c8a96e;
+  --accent2:#4a6741;
+  --border:#e4e3de;
+  --text:#2a2a28;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 3.5rem;
+  background:rgba(247,246,242,0.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.logo-mark{
+  display:flex;align-items:center;gap:.7rem;
+}
+.logo-diamond{
+  width:22px;height:22px;
+  background:var(--black);
+  transform:rotate(45deg);
+  flex-shrink:0;
+}
+.logo-text{
+  font-family:'DM Sans',sans-serif;
+  font-size:.8rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--black);
+}
+nav{display:flex;gap:2.4rem;list-style:none;}
+nav a{
+  font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gray);
+  text-decoration:none;transition:color .25s;
+}
+nav a:hover{color:var(--black);}
+.nav-cta{
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.5rem 1.4rem;
+  background:var(--black);color:var(--white);
+  text-decoration:none;
+  transition:background .25s;
+}
+.nav-cta:hover{background:var(--accent);}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding-top:72px;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 3.5rem 5rem 3.5rem;
+  border-right:1px solid var(--border);
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:.8rem;
+  font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gray);
+  margin-bottom:2.2rem;
+}
+.hero-eyebrow::before{
+  content:'';width:28px;height:1px;background:var(--gray);
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,5.5vw,6rem);
+  font-weight:300;line-height:.95;
+  letter-spacing:-.01em;
+  color:var(--black);
+  margin-bottom:.6rem;
+}
+.hero-name em{font-style:italic;color:var(--accent);}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:300;
+  color:var(--gray);font-style:italic;
+  margin-bottom:2.4rem;
+}
+.hero-desc{
+  font-size:.88rem;line-height:1.85;
+  color:var(--gray);max-width:400px;
+  margin-bottom:2.8rem;
+}
+.hero-actions{display:flex;gap:1rem;align-items:center;}
+.btn-dark{
+  display:inline-block;
+  padding:.75rem 2rem;
+  background:var(--black);color:var(--white);
+  font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all .3s;
+}
+.btn-dark:hover{background:var(--accent);}
+.btn-ghost{
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--black);
+  text-decoration:none;border-bottom:1px solid var(--black);
+  padding-bottom:2px;transition:color .25s,border-color .25s;
+}
+.btn-ghost:hover{color:var(--accent);border-color:var(--accent);}
+
+.hero-right{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  grid-template-columns:1fr 1fr;
+}
+.hero-img-block{
+  position:relative;overflow:hidden;
+  background:var(--light);
+}
+.hero-img-block img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.hero-img-block:hover img{transform:scale(1.05);}
+.hero-img-block:first-child{grid-column:1/3;} 
+.img-label{
+  position:absolute;bottom:.9rem;left:1rem;
+  font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.7);
+  background:rgba(0,0,0,.35);padding:.25rem .6rem;
+}
+
+/* Hero placeholders with gradient patterns */
+.ph-1{background:linear-gradient(135deg,#1a2a1a 0%,#2d4a2d 40%,#3a6040 100%);}
+.ph-2{background:linear-gradient(135deg,#2a2018 0%,#4a3820 60%,#6a5030 100%);}
+.ph-3{background:linear-gradient(135deg,#181828 0%,#282848 60%,#384060 100%);}
+
+/* Stats bar */
+.stats-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.stat-item{
+  padding:2.2rem 3.5rem;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child{border-right:none;}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:300;
+  color:var(--black);line-height:1;
+  margin-bottom:.3rem;
+}
+.stat-l{
+  font-size:.67rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gray);
+}
+
+/* ── SECTION COMMON ── */
+.section-wrap{padding:6rem 3.5rem;}
+.section-intro{
+  display:flex;align-items:flex-start;
+  justify-content:space-between;
+  gap:3rem;margin-bottom:4rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid var(--border);
+}
+.section-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4.5rem;font-weight:300;
+  color:var(--border);line-height:1;
+  flex-shrink:0;
+}
+.section-head{flex:1;}
+.section-label{
+  font-size:.66rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:.7rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.section-label::before{content:'';width:18px;height:1px;background:var(--accent);}
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3.5vw,3.2rem);
+  font-weight:300;line-height:1.15;
+  color:var(--black);letter-spacing:-.01em;
+}
+h2 em{font-style:italic;color:var(--accent);}
+.section-note{
+  max-width:320px;font-size:.82rem;
+  line-height:1.8;color:var(--gray);
+  padding-top:.5rem;
+}
+
+/* ── ABOUT ── */
+#about .about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
+}
+.about-main p{
+  font-size:.9rem;line-height:1.95;color:var(--gray);margin-bottom:1.1rem;
+}
+.about-main p strong{color:var(--text);}
+.about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem;}
+.at{
+  font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .85rem;
+  border:1px solid var(--border);color:var(--gray);
+  transition:all .25s;
+}
+.at:hover{border-color:var(--black);color:var(--black);}
+
+.edu-block{
+  border:1px solid var(--border);padding:2rem;
+  position:relative;
+}
+.edu-block::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+}
+.edu-uni{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:400;
+  color:var(--black);margin-bottom:.3rem;
+}
+.edu-deg{font-size:.78rem;color:var(--gray);margin-bottom:1rem;line-height:1.5;}
+.edu-chips{display:flex;flex-wrap:wrap;gap:.45rem;}
+.chip{
+  font-size:.63rem;letter-spacing:.08em;
+  padding:.22rem .65rem;
+  background:var(--light);color:var(--gray);
+}
+.os-block{
+  margin-top:1.5rem;padding:1.2rem;
+  background:var(--black);color:var(--white);
+  font-size:.78rem;line-height:1.7;
+}
+.os-block span{color:var(--accent);}
+.ieee-block{
+  margin-top:1.2rem;border:1px solid var(--border);padding:1.2rem;
+  font-size:.78rem;line-height:1.6;color:var(--gray);
+}
+.ieee-block strong{color:var(--text);}
+
+/* ── PROJECTS ── */
+#projects .projects-list{display:flex;flex-direction:column;gap:0;}
+.project-row{
+  display:grid;grid-template-columns:80px 1fr auto;
+  align-items:start;gap:2.5rem;
+  padding:2.2rem 0;
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+  cursor:default;
+}
+.project-row:first-child{border-top:1px solid var(--border);}
+.project-row:hover{background:var(--white);margin:0 -3.5rem;padding-left:3.5rem;padding-right:3.5rem;}
+.proj-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:300;
+  color:var(--border);padding-top:.2rem;
+}
+.proj-content{}
+.proj-year{
+  font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:.5rem;
+}
+.proj-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:400;
+  color:var(--black);margin-bottom:.7rem;line-height:1.2;
+}
+.proj-desc{
+  font-size:.82rem;line-height:1.85;
+  color:var(--gray);max-width:600px;margin-bottom:1rem;
+}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.4rem;}
+.stk{
+  font-size:.62rem;letter-spacing:.06em;
+  padding:.2rem .6rem;
+  border:1px solid var(--border);
+  color:var(--gray);
+}
+.proj-badge{
+  align-self:flex-start;
+  font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.3rem .8rem;
+  border:1px solid currentColor;
+  color:var(--accent);white-space:nowrap;
+}
+.proj-badge.rd{color:#4a6741;border-color:#4a6741;}
+
+/* ── SKILLS ── */
+#skills .skills-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border:1px solid var(--border);
+}
+.skill-block{
+  padding:2rem 2.2rem;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  transition:background .25s;
+}
+.skill-block:hover{background:var(--white);}
+.skill-block:nth-child(3n){border-right:none;}
+.skill-block:nth-child(n+4){border-bottom:none;}
+.sk-cat{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:400;
+  color:var(--black);margin-bottom:.9rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.sk-icon{font-size:1rem;}
+.sk-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.sk-tag{
+  font-size:.65rem;letter-spacing:.06em;
+  padding:.22rem .65rem;
+  background:var(--light);color:var(--gray);
+  transition:all .2s;
+}
+.sk-tag:hover{background:var(--black);color:var(--white);}
+
+/* ── CERTS ── */
+#certs .certs-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;
+}
+.cert-card{
+  border:1px solid var(--border);padding:2rem;
+  display:flex;gap:1.5rem;align-items:flex-start;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.cert-card::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s;
+}
+.cert-card:hover::after{transform:scaleX(1);}
+.cert-card:hover{background:var(--white);}
+.cert-icon{
+  width:40px;height:40px;background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-size:1.1rem;
+}
+.cert-body{}
+.cert-issuer{
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.4rem;
+}
+.cert-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:400;
+  color:var(--black);margin-bottom:.3rem;line-height:1.3;
+}
+.cert-id{font-size:.65rem;color:var(--gray);font-style:italic;}
+
+/* ── CONTACT ── */
+#contact{
+  background:var(--black);color:var(--white);
+  padding:6rem 3.5rem;
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+#contact .section-label{color:var(--accent);}
+#contact .section-label::before{background:var(--accent);}
+#contact h2{color:var(--white);}
+#contact h2 em{color:var(--accent);}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2rem;margin-top:3.5rem;width:100%;max-width:800px;
+}
+.clink{
+  display:flex;flex-direction:column;gap:.3rem;
+  padding:1.6rem;border:1px solid rgba(255,255,255,.1);
+  text-decoration:none;transition:border-color .25s,background .25s;
+}
+.clink:hover{border-color:var(--accent);background:rgba(200,169,110,.07);}
+.clink-label{
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+}
+.clink-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;color:var(--white);line-height:1.3;
+}
+.footer{
+  width:100%;margin-top:5rem;
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+
+@media(max-width:900px){
+  header{padding:1.2rem 1.5rem;}
+  nav{display:none;}
+  #hero{grid-template-columns:1fr;grid-template-rows:auto;}
+  .hero-right{display:none;}
+  .hero-left{border-right:none;padding:5rem 1.5rem 3rem;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+  .stat-item{padding:1.5rem;}
+  .section-wrap{padding:4rem 1.5rem;}
+  #about .about-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr 1fr!important;}
+  .skill-block:nth-child(3n){border-right:1px solid var(--border);}
+  .skill-block:nth-child(2n){border-right:none;}
+  .certs-grid{grid-template-columns:1fr!important;}
+  .contact-grid{grid-template-columns:1fr;}
+  .project-row{grid-template-columns:50px 1fr;gap:1.2rem;}
+  .proj-badge{display:none;}
+  #contact{padding:4rem 1.5rem;}
+  .footer{flex-direction:column;gap:.5rem;text-align:center;}
+  .section-intro{flex-direction:column;gap:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-mark">
+    <div class="logo-diamond"></div>
+    <span class="logo-text">Sai Vamshi Danthoju</span>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#certs">Certs</a>
+  </nav>
+  <a href="mailto:saivamshidanthoju@gmail.com" class="nav-cta">Hire Me</a>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Available for Internships — 2025</div>
+    <h1 class="hero-name">
+      Sai<br>
+      <em>Vamshi</em><br>
+      Danthoju
+    </h1>
+    <p class="hero-title">CS Engineer · Security & Web Dev</p>
+    <p class="hero-desc">
+      Building secure web applications and intelligent systems from Hyderabad. Passionate about cybersecurity, machine learning, and IoT — bridging the gap between elegant code and robust security.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-dark">View Projects</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-block ph-1" style="grid-column:1/3;grid-row:1/2;">
+      <div class="img-label">IoT & Cybersecurity Research — 2026</div>
+    </div>
+    <div class="hero-img-block ph-2">
+      <div class="img-label">ML Projects</div>
+    </div>
+    <div class="hero-img-block ph-3">
+      <div class="img-label">Full Stack Dev</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-n">8.53</div>
+    <div class="stat-l">CGPA</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-n">4+</div>
+    <div class="stat-l">Projects Built</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-n">96%</div>
+    <div class="stat-l">ISL Model Accuracy</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-n">4</div>
+    <div class="stat-l">Certifications</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section-wrap">
+  <div class="section-intro">
+    <div class="section-num">01</div>
+    <div class="section-head">
+      <div class="section-label">About Me</div>
+      <h2>Security-first <em>full-stack</em> builder</h2>
+    </div>
+    <p class="section-note">Osmania University · BE Computer Science Engineering [IOT-CS-BCT] · Aug 2023 – July 2027</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-main">
+      <p>I'm a passionate web development and cybersecurity enthusiast focused on <strong>securing digital assets</strong> while building robust, high-performance web applications. I identify vulnerabilities, implement secure coding practices, and optimize web technologies for both functionality and security.</p>
+      <p>Adept in <strong>ethical hacking</strong>, problem-solving, and staying updated on the latest industry trends. I work across Linux (Ubuntu, Kali Linux) and Windows environments — comfortable in both development and penetration-testing contexts.</p>
+      <p>Currently active as an <strong>IEEE member</strong> (Jan 2024 – Dec 2025), contributing to the development of electronics and computer industry standards. I speak English, Hindi, and Telugu fluently.</p>
+      <div class="about-tags">
+        <span class="at">Ethical Hacking</span>
+        <span class="at">ML Security</span>
+        <span class="at">IoT Systems</span>
+        <span class="at">Full Stack Dev</span>
+        <span class="at">Computer Vision</span>
+        <span class="at">IEEE Member</span>
+        <span class="at">Kali Linux</span>
+        <span class="at">Open Source</span>
+      </div>
+    </div>
+    <div>
+      <div class="edu-block">
+        <div class="edu-uni">Osmania University</div>
+        <div class="edu-deg">BE — Computer Science Engineering [IOT-CS-BCT]<br>Aug 2023 – July 2027</div>
+        <div class="edu-chips">
+          <span class="chip">CGPA 8.53</span>
+          <span class="chip">DSA</span>
+          <span class="chip">Cybersecurity</span>
+          <span class="chip">Computer Networks</span>
+          <span class="chip">DBMS</span>
+        </div>
+      </div>
+      <div class="os-block">
+        <span>Operating Systems:</span><br>
+        Windows · Linux [Ubuntu · Kali]
+      </div>
+      <div class="ieee-block">
+        <strong>IEEE Member</strong> — Institute of Electrical and Electronics Engineers<br>
+        Jan 2024 – Dec 2025 · Develops international standards for the electronics &amp; computer industry.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section-wrap" style="background:var(--white);padding-left:0;padding-right:0;">
+  <div style="padding:0 3.5rem;">
+    <div class="section-intro">
+      <div class="section-num">02</div>
+      <div class="section-head">
+        <div class="section-label">Projects</div>
+        <h2>Things I've <em>built</em></h2>
+      </div>
+      <p class="section-note">From ML-powered security tools to real-time IoT dashboards and gesture recognition systems.</p>
+    </div>
+  </div>
+  <div style="padding:0 3.5rem;" class="projects-list">
+
+    <div class="project-row">
+      <div class="proj-num">01</div>
+      <div class="proj-content">
+        <div class="proj-year">2024</div>
+        <div class="proj-title">Website Vulnerability Detection using Machine Learning</div>
+        <p class="proj-desc">Built a machine learning model to detect potential vulnerabilities and malicious patterns in websites. Extracts site features to classify suspicious behaviour such as phishing and injection attacks. Ships with a PyQt GUI — paste a URL, get an instant security report.</p>
+        <div class="proj-stack">
+          <span class="stk">Python</span><span class="stk">Scikit-learn</span><span class="stk">Pandas</span><span class="stk">Machine Learning</span><span class="stk">PyQt</span>
+        </div>
+      </div>
+      <div class="proj-badge">Security / ML</div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">02</div>
+      <div class="proj-content">
+        <div class="proj-year">2025</div>
+        <div class="proj-title">Indian Sign Language Translator</div>
+        <p class="proj-desc">Real-time ISL recognition that converts hand gestures to text and speech using machine learning. Collected and trained a custom gesture dataset — achieved 96% classification accuracy across multiple ISL signs, with live camera detection and integrated text-to-speech output.</p>
+        <div class="proj-stack">
+          <span class="stk">Python</span><span class="stk">OpenCV</span><span class="stk">Machine Learning</span><span class="stk">NumPy</span><span class="stk">Text-to-Speech</span>
+        </div>
+      </div>
+      <div class="proj-badge">Computer Vision</div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">03</div>
+      <div class="proj-content">
+        <div class="proj-year">2026</div>
+        <div class="proj-title">Secure IoT Smart Energy Meter</div>
+        <p class="proj-desc">ESP32-based IoT system for real-time voltage, current, power, and energy monitoring. Calculates kWh consumption and predicts electricity bills from usage patterns. A React web dashboard enables remote cloud monitoring via Firebase/AWS and MQTT protocol.</p>
+        <div class="proj-stack">
+          <span class="stk">ESP32</span><span class="stk">IoT Sensors</span><span class="stk">React</span><span class="stk">Firebase/AWS</span><span class="stk">MQTT</span><span class="stk">CSS</span>
+        </div>
+      </div>
+      <div class="proj-badge">IoT / Cloud</div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">04</div>
+      <div class="proj-content">
+        <div class="proj-year">2026 — Ongoing</div>
+        <div class="proj-title">Secure IoT Framework for EV Sensor Networks</div>
+        <p class="proj-desc">Developing a secure EV IoT architecture using ESP32, Raspberry Pi, Jetson Nano, and CAN Bus. Implementing sensor-level encryption, AI-based anomaly detection, and secure OTA firmware updates — advancing cybersecurity for electric vehicle systems.</p>
+        <div class="proj-stack">
+          <span class="stk">ESP32</span><span class="stk">Raspberry Pi</span><span class="stk">Jetson Nano</span><span class="stk">CAN Bus</span><span class="stk">AI Anomaly Detection</span><span class="stk">OTA Updates</span>
+        </div>
+      </div>
+      <div class="proj-badge rd">R&amp;D</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section-wrap">
+  <div class="section-intro">
+    <div class="section-num">03</div>
+    <div class="section-head">
+      <div class="section-label">Skills</div>
+      <h2>My <em>tech</em> stack</h2>
+    </div>
+    <p class="section-note">Languages, frameworks, tools, and platforms I work with day-to-day.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="sk-cat"><span class="sk-icon">⚡</span> Languages</div>
+      <div class="sk-tags">
+        <span class="sk-tag">Python</span><span class="sk-tag">C</span><span class="sk-tag">Java</span><span class="sk-tag">SQL</span><span class="sk-tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="sk-cat"><span class="sk-icon">🌐</span> Frontend</div>
+      <div class="sk-tags">
+        <span class="sk-tag">HTML</span><span class="sk-tag">CSS</span><span class="sk-tag">React.js</span><span class="sk-tag">Next.js</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="sk-cat"><span class="sk-icon">🛠</span> Backend & DB</div>
+      <div class="sk-tags">
+        <span class="sk-tag">Node.js</span><span class="sk-tag">Express.js</span><span class="sk-tag">MongoDB</span><span class="sk-tag">MySQL</span><span class="sk-tag">API Integration</span><span class="sk-tag">Git & GitHub</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="sk-cat"><span class="sk-icon">🤖</span> AI & ML</div>
+      <div class="sk-tags">
+        <span class="sk-tag">Scikit-learn</span><span class="sk-tag">Pandas</span><span class="sk-tag">OpenCV</span><span class="sk-tag">NumPy</span><span class="sk-tag">PyQt</span><span class="sk-tag">Text-to-Speech</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="sk-cat"><span class="sk-icon">🔒</span> Cybersecurity</div>
+      <div class="sk-tags">
+        <span class="sk-tag">Ethical Hacking</span><span class="sk-tag">Vuln. Detection</span><span class="sk-tag">Secure Coding</span><span class="sk-tag">Kali Linux</span><span class="sk-tag">Network Security</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="sk-cat"><span class="sk-icon">☁️</span> IoT & Cloud</div>
+      <div class="sk-tags">
+        <span class="sk-tag">ESP32</span><span class="sk-tag">Raspberry Pi</span><span class="sk-tag">MQTT</span><span class="sk-tag">Firebase</span><span class="sk-tag">AWS</span><span class="sk-tag">CAN Bus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs" class="section-wrap" style="background:var(--white);">
+  <div class="section-intro">
+    <div class="section-num">04</div>
+    <div class="section-head">
+      <div class="section-label">Certifications</div>
+      <h2>Verified <em>credentials</em></h2>
+    </div>
+    <p class="section-note">Industry-recognised certifications in cybersecurity, networking, programming, and databases.</p>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🐧</div>
+      <div class="cert-body">
+        <div class="cert-issuer">The Linux Foundation</div>
+        <div class="cert-name">Cybersecurity Essentials — LFC108</div>
+        <div class="cert-id">Certificate ID: LF-ihn628uc40</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-body">
+        <div class="cert-issuer">Cisco Networking Academy</div>
+        <div class="cert-name">CCNA: Introduction to Networks</div>
+        <div class="cert-id">Cisco NetAcad — Verified</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🐍</div>
+      <div class="cert-body">
+        <div class="cert-issuer">Python Institute</div>
+        <div class="cert-name">Python Essentials</div>
+        <div class="cert-id">Python Institute — Certified</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🗄</div>
+      <div class="cert-body">
+        <div class="cert-issuer">Oracle Academy</div>
+        <div class="cert-name">Database Programming with SQL</div>
+        <div class="cert-id">Oracle Academy — Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="color:var(--accent);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;">
+    <span style="width:18px;height:1px;background:var(--accent);display:inline-block;"></span>05 — Contact
+  </div>
+  <h2 style="color:var(--white);font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;margin-bottom:.8rem;">
+    Let's build something <em style="color:var(--accent);font-style:italic;">secure</em>
+  </h2>
+  <p style="font-size:.85rem;color:rgba(255,255,255,.4);max-width:480px;line-height:1.8;margin-top:.5rem;">
+    Open to internships in web development, cybersecurity, and ML engineering. Also interested in research collaborations and hackathons.
+  </p>
+  <div class="contact-grid">
+    <a href="mailto:saivamshidanthoju@gmail.com" class="clink">
+      <span class="clink-label">Email</span>
+      <span class="clink-val">saivamshidanthoju@gmail.com</span>
+    </a>
+    <a href="tel:+918374170152" class="clink">
+      <span class="clink-label">Phone</span>
+      <span class="clink-val">+91 83741 70152</span>
+    </a>
+    <a href="https://linkedin.com/in/saivamshi-d" target="_blank" class="clink">
+      <span class="clink-label">LinkedIn</span>
+      <span class="clink-val">linkedin.com/in/saivamshi-d</span>
+    </a>
+    <a href="#" class="clink">
+      <span class="clink-label">Location</span>
+      <span class="clink-val">Hyderabad, Telangana, India</span>
+    </a>
+  </div>
+  <div class="footer">
+    <span>© 2025 Sai Vamshi Danthoju</span>
+    <span>Osmania University — BE CSE [IOT-CS-BCT]</span>
+    <span>IEEE Member · English · Hindi · Telugu</span>
+  </div>
+</section>
+
+</body>
+</html>
